@@ -1,0 +1,17 @@
+name: KernelSU Next Patching
+
+on:
+  push:
+    branches: [ SalamandersKSU ]   # This workflow runs only on the SalamandersKSU branch
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v2
+
+      - name: Apply KernelSU Next Patch (Stable)
+        run: |
+          curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next-susfs/kernel/setup.sh" | bash -s next-susfs
+
